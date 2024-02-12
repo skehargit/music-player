@@ -1,57 +1,30 @@
 var play = document.querySelector("#play");
 var backward = document.querySelector("#backward");
 var forward = document.querySelector("#forward");
+var leftImg=document.getElementById("left-img");
+var leftName=document.getElementById("dname");
+var users=document.getElementById('users');
 // ==========Array of objs contain music list=======
-var songs = [
-  {
-    name: "Bol Do Na Zara",
-    url: "./songs/BOL DO NA ZARA.mp3",
-    img: "./images/Bol-Do-Na-Zara.jpg",
-    duration: "4.04",
-  },
-  {
-    name: "Hua Hain Aaj Pehli Baar",
-    url: "./songs/Hua-Hain-Aaj-Pehli-Baar.mp3",
-    img: "./images/Hua-Hain-Aaj-Pehli-Baar.jpg",
-    duration: "4.07",
-  },
-  {
-    name: "Sanam teri kasam",
-    url: "./songs/sanam-teri-kasam.mp3",
-    img: "./images/sanam-teri-kasam.jpg",
-    duration: "5.14",
-  },
-  {
-    name: "Kuch to hai",
-    url: "./songs/kuch to hai.mp3",
-    img: "./images/kuch to hai.jpg",
-    duration: "4.08",
-  },
-  {
-    name: "Kaun tujhe",
-    url: "./songs/kaun tujhe.mp3",
-    img: "./images/kaun tujhe.jpg",
-    duration: "4.01",
-  },
-  {
-    name: "Arjan Vailly Ne",
-    url: "./songs/Arjan Vailly Ne.mp3",
-    img: "./images/animal.jpg",
-    duration: "3:02",
-  },
-  {
-    name: "Jale 2",
-    url: "./songs/Jale 2.mp3",
-    img: "./images/jale.jpg",
-    duration: "2.39",
-  },
-  {
-    name: "ram",
-    url: "./songs/Pehle Bhi Main.mp3",
-    img: "./images/ram.jpg",
-    duration: "4.10",
-  },
-];
+var songs=sekhar;
+document.getElementById('p').addEventListener('click',()=>{
+  songs=pranjal;
+  document.getElementById('users-show').style.transform=`translate(160%)`;
+  mainlistshow();
+})
+document.getElementById('s').addEventListener('click',()=>{
+  songs=sekhar;
+  document.getElementById('users-show').style.transform=`translate(160%)`;
+  mainlistshow();
+})
+
+var userflag=false;
+users.addEventListener('click',()=>{
+  userflag=!userflag;
+  if(userflag)document.getElementById('users-show').style.transform=`translate(0)`;
+  else document.getElementById('users-show').style.transform=`translate(160%)`;
+})
+
+
 
 var audio = new Audio(); //to play audio
 
@@ -91,15 +64,15 @@ function mainlistshow() {
   songs.forEach((el, idx) => {
     output += `<li class="song-card" id=${idx}>
         <div class="part1">
-            <img src="${el.img}" alt="">
-        <h2>${el.name}</h2>
+            <img src="${el.img}" name='${idx}' alt="">
+            <h2  name='${idx}' >${el.name}</h2>
         </div>
         <h3><span><i class="ri-timer-2-line"></i></span>${el.duration}</h3>
     </li>`;
   });
   document.getElementById("allsongs").innerHTML = output;
-  document.getElementById("left-img").src = songs[selectedsong].img;
-  document.getElementById("dname").textContent = songs[selectedsong].name;
+  leftImg.src = songs[selectedsong].img;
+  leftName.textContent = songs[selectedsong].name;
   audio.src = songs[selectedsong].url;
 }
 mainlistshow(); //self Invoked
@@ -109,16 +82,22 @@ mainlistshow(); //self Invoked
 var progress=document.getElementById('progress');
 var progress_div=document.getElementById('progress_div');
 audio.addEventListener('timeupdate',()=>{
+  // ==== progress bar ===
     if(audio.duration){
         var time=(audio.currentTime/audio.duration)*100;
         progress.style.width=`${time}%`;
     }
+
+    // === auto play ====
+    if(audio.currentTime==audio.duration){
+      if(selectedsong==songs.length-1)selectedsong=0;
+      else selectedsong++;
+      musicplay(selectedsong);
+    }
 })
 progress_div.addEventListener('click',(event)=>{
-    // console.log(event);
     var duration=audio.duration;
     var time=(event.offsetX/event.srcElement.clientWidth)*duration;
-    // console.log(duration,time)
     audio.currentTime=time;
 
 })
@@ -126,20 +105,20 @@ progress_div.addEventListener('click',(event)=>{
 
 // =========== song select ↙️ ======= using EventBubbling
 document.getElementById("allsongs").addEventListener("click", (el) => {
-  selectedsong = el.target.id;
+  // console.log(el,el.target,el.target.attributes.name.value)
+  var num=el.target.id;
+  if(!num)num=Number(el.target.attributes.name.value);
+  selectedsong=num;
   musicplay(selectedsong);
-//   setInterval(()=>{
-//     // console.log(audio.currentTime)
-    
-//   },1000) 
 });
 // =========== song select End ↖️ =======
 
 // ============= playing song function ↙️ ===========
 function musicplay(id) {
+  // if(!Number(id))console.log(id)
   audio.src = songs[id].url;
-  document.getElementById("left-img").src = songs[id].img;
-  document.getElementById("dname").textContent = songs[selectedsong].name;
+  leftImg.src = songs[id].img;
+  leftName.textContent = songs[selectedsong].name;
   play.innerHTML = `<i class="ri-pause-fill"></i>`;
   flag = true;
   audio.play();

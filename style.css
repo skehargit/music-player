@@ -5,6 +5,9 @@
     color: white;
     font-family: sans-serif;
 }
+body{
+    overflow-x: hidden;
+}
 #main{
     height: 100vh;
     width: 100vw;
@@ -18,8 +21,6 @@
 /* ========== left section ============ */
 #left{
     width: 100%;
-    
-    backdrop-filter: blur(8px);
     border-radius: 20px;
     background: rgb(18, 73, 41);
     padding: 20px;
@@ -29,7 +30,6 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    
 }
 @keyframes animate{
     0%{
@@ -52,6 +52,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    transition: .5s;
     
 }
 /* ======== Right section ========= */
@@ -102,6 +103,7 @@
 .song-card:hover h2{
     transform: translateX(10%);
 }
+
 /* ========= play, pause button ========== */
 #player{
     display: flex;
@@ -116,6 +118,7 @@
     background: rgba(18, 73, 41, 0.168);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    /* overflow-x: hidden; */
 }
 #player h3{
     border-radius: 50%;
@@ -127,6 +130,37 @@
 }
 #player h3:active{
     scale: 0.9;
+}
+#users{
+    position: absolute;
+    right: 20px;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 50%;
+}
+#users ul{
+    position: absolute;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    list-style: none;
+    gap: 10px;
+    transition: .5s;
+    transform: translateX(160%);
+}
+#users ul li{
+    border: 1px solid white;
+    /* backdrop-filter: blur(10px); */
+    background: rgb(18, 73, 41);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 /* =========progress bar======= */
 #progress_div{
@@ -160,6 +194,9 @@
     }
     #left .img img{
         width: 200px;
+    }
+    .song-card:last-child{
+        padding-bottom: 70px;
     }
 
 }
