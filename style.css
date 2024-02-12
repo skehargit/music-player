@@ -13,23 +13,27 @@ body{
     width: 100vw;
     background-color: black;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 10vw;
+    /* padding: 10vw; */
 }
 
 /* ========== left section ============ */
 #left{
-    width: 100%;
-    border-radius: 20px;
-    background: rgb(18, 73, 41);
+    width: 50%;
+    /* left: 0; */
+    height: 100%;
+    border-radius: 50%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background: rgb(34, 79, 58);
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 10;
 }
 @keyframes animate{
     0%{
@@ -40,10 +44,10 @@ body{
     }
 }
 #left .img img{
-    width: 450px;
+    border-radius: 10px;
+    width: 70%;
 }
 #left .img{
-    border: 1px solid rgba(255, 255, 255, 0.138);
     padding: 10px;
     height: fit-content;
     width: 80%;
@@ -55,16 +59,29 @@ body{
     transition: .5s;
     
 }
+#left .img:hover{
+    scale: 0.9;
+}
 /* ======== Right section ========= */
 #right{
     height: 100%;
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
+    width: 50%;
+    padding: 50px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     overflow: scroll;
     overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+#right>h3{
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(34, 79, 58);
+    color: rgb(34, 79, 58);
 }
 #right::-webkit-scrollbar{
     display: none;
@@ -72,19 +89,22 @@ body{
 /* ============ allsongs list section ========== */
 #allsongs{
     height: 80%;
+    width: 100%;
+    max-width: 500px;
 }
 .song-card{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.272);
+    border-bottom: 1px solid rgb(34, 79, 58);
     padding: 10px 15px;
+}
+.song-card:hover{
+    cursor: pointer;
 }
 .song-card h3{
     font-size: 0.7rem;
-}
-.song-card h3 span{
-    padding-right: 5px;
+    font-weight: lighter;
 }
 .part1{
     display: flex;
@@ -94,8 +114,13 @@ body{
 .part1 img{
     height: 40px;
     width: 40px;
+    transition: .5s;
+}
+.part1 img:hover{
+    scale: 1.2;
 }
 .part1 h2{
+    font-weight: 100;
     font-size: 1rem;
     padding: 10px;
     transition: .5s;
@@ -114,53 +139,84 @@ body{
     padding: 10px;
     width: 100%;
     gap: 10px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(20px);
     background: rgba(18, 73, 41, 0.168);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     /* overflow-x: hidden; */
+    z-index: 11;
 }
 #player h3{
     border-radius: 50%;
     padding: 10px;
     display: flex;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid rgb(34, 79, 58);
     color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+#play:hover{
+    scale: 0.9;
 }
 #player h3:active{
     scale: 0.9;
 }
+#backward,#forward{
+    scale: 0.7;
+}
+#backward:hover,#forward:hover{
+    scale: 0.5;
+
+}
 #users{
     position: absolute;
     right: 20px;
-    border: 1px solid white;
+    border: 1px solid rgb(34, 79, 58);
     padding: 10px;
     border-radius: 50%;
+    cursor: pointer;
+    transition: .5s;
+}
+#users:hover{
+    scale: 1.1;
+    /* font-size: 10px; */
 }
 #users ul{
     position: absolute;
-    bottom: 60px;
+    bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    right: 0;
+    right: -50%;
     list-style: none;
     gap: 10px;
     transition: .5s;
     transform: translateX(160%);
+    /* border: 1px solid red; */
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    overflow: hidden;
+    border-bottom-right-radius: 0;
+    background:rgba(34, 79, 58, 0.195) ;
+    padding: 20px;
 }
 #users ul li{
-    border: 1px solid white;
+    border: 1px solid rgb(34, 79, 58);
     /* backdrop-filter: blur(10px); */
-    background: rgb(18, 73, 41);
+    background: rgb(34, 79, 58);
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    cursor: pointer;
+    transition: .5s;
+}
+#users ul li:hover{
+    scale: 0.8;
 }
 /* =========progress bar======= */
 #progress_div{
@@ -169,6 +225,9 @@ body{
     background: rgba(255, 255, 255, 0.22);
     position: relative;
     border-radius: 5px;
+}
+#progress_div:hover{
+    cursor: pointer;
 }
 #progress{
     position: absolute;
@@ -187,6 +246,8 @@ body{
         flex-direction: column;
     }
     #left{
+        width: 100%;
+        height: fit-content;
         border-radius: 25px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
@@ -194,6 +255,10 @@ body{
     }
     #left .img img{
         width: 200px;
+    }
+    #right{
+        padding: 5px 10px;
+        width: 100%;
     }
     .song-card:last-child{
         padding-bottom: 70px;

@@ -67,7 +67,7 @@ function mainlistshow() {
             <img src="${el.img}" name='${idx}' alt="">
             <h2  name='${idx}' >${el.name}</h2>
         </div>
-        <h3><span><i class="ri-timer-2-line"></i></span>${el.duration}</h3>
+        <h3>${el.duration}</h3>
     </li>`;
   });
   document.getElementById("allsongs").innerHTML = output;
