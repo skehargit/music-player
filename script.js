@@ -8,20 +8,18 @@ var users=document.getElementById('users');
 var songs=sekhar;
 document.getElementById('p').addEventListener('click',()=>{
   songs=pranjal;
-  document.getElementById('users-show').style.transform=`translate(160%)`;
   mainlistshow();
 })
 document.getElementById('s').addEventListener('click',()=>{
   songs=sekhar;
-  document.getElementById('users-show').style.transform=`translate(160%)`;
   mainlistshow();
 })
-
+// ========== users ============
 var userflag=false;
 users.addEventListener('click',()=>{
   userflag=!userflag;
-  if(userflag)document.getElementById('users-show').style.transform=`translate(0)`;
-  else document.getElementById('users-show').style.transform=`translate(160%)`;
+  if(userflag)document.getElementById('users-show').style.display=`block`;
+  else document.getElementById('users-show').style.display=`none`;
 })
 
 

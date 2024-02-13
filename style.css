@@ -15,6 +15,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 /* ========== left section ============ */
@@ -192,6 +193,7 @@ body{
     border-radius: 50%;
     cursor: pointer;
     transition: .5s;
+    /* overflow: hidden; */
 }
 #users:hover{
     scale: 1.1;
@@ -207,7 +209,8 @@ body{
     list-style: none;
     gap: 10px;
     transition: .5s;
-    transform: translateX(160%);
+    /* transform: translateX(160%); */
+    display: none;
     border-radius: 20px;
     border-top-right-radius: 0;
     overflow: hidden;
