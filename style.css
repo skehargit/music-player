@@ -15,13 +15,11 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 10vw; */
 }
 
 /* ========== left section ============ */
 #left{
     width: 50%;
-    /* left: 0; */
     height: 100%;
     border-radius: 50%;
     border-top-left-radius: 0;
@@ -46,6 +44,7 @@ body{
 #left .img img{
     border-radius: 10px;
     width: 70%;
+    transition: .5s;
 }
 #left .img{
     padding: 10px;
@@ -59,7 +58,7 @@ body{
     transition: .5s;
     
 }
-#left .img:hover{
+#left .img:hover #left-img{
     scale: 0.9;
 }
 /* ======== Right section ========= */
@@ -67,7 +66,6 @@ body{
     height: 100%;
     width: 50%;
     padding: 50px;
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -91,6 +89,24 @@ body{
     height: 80%;
     width: 100%;
     max-width: 500px;
+}
+#list-top{
+    border-bottom: 1px solid rgb(34, 79, 58);
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+}
+#title{
+    font-family: sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+#list-top>i{
+    font-size: 12px;
 }
 .song-card{
     display: flex;
@@ -143,7 +159,6 @@ body{
     background: rgba(18, 73, 41, 0.168);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    /* overflow-x: hidden; */
     z-index: 11;
 }
 #player h3{
@@ -180,7 +195,6 @@ body{
 }
 #users:hover{
     scale: 1.1;
-    /* font-size: 10px; */
 }
 #users ul{
     position: absolute;
@@ -194,7 +208,6 @@ body{
     gap: 10px;
     transition: .5s;
     transform: translateX(160%);
-    /* border: 1px solid red; */
     border-radius: 20px;
     border-top-right-radius: 0;
     overflow: hidden;
@@ -204,7 +217,6 @@ body{
 }
 #users ul li{
     border: 1px solid rgb(34, 79, 58);
-    /* backdrop-filter: blur(10px); */
     background: rgb(34, 79, 58);
     width: 40px;
     height: 40px;
@@ -231,11 +243,28 @@ body{
 }
 #progress{
     position: absolute;
-    background: rgb(0, 0, 0);
+    background: rgb(0, 161, 86);
     border-radius: 5px;
     width: 0;
     height: 100%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: .4s;
+}
+#circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgb(4, 255, 138);
+    position: absolute;
+    right: 0;
+    transition: .4s;
+
+}
+#progress_div:hover #circle{
+    scale: 1.5;
 }
 
 /* ====== responsive ========= */
