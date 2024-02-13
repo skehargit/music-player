@@ -4,6 +4,8 @@ var forward = document.querySelector("#forward");
 var leftImg=document.getElementById("left-img");
 var leftName=document.getElementById("dname");
 var users=document.getElementById('users');
+var startTime=document.getElementById('start-time');
+var endTime=document.getElementById('end-time')
 // ==========Array of objs contain music list=======
 var songs=sekhar;
 document.getElementById('p').addEventListener('click',()=>{
@@ -79,7 +81,15 @@ mainlistshow(); //self Invoked
 // ========== progress bar ==========
 var progress=document.getElementById('progress');
 var progress_div=document.getElementById('progress_div');
+
 audio.addEventListener('timeupdate',()=>{
+
+  // ========timing=====
+  var str=('0'+(audio.duration/60+'').substring(0,4));
+  if(str!='0NaN')endTime.innerHTML=str;
+  var str2=('0'+(audio.currentTime/60+'').substring(0,4));
+  if(str2!='00')startTime.innerHTML=str2;
+  
   // ==== progress bar ===
     if(audio.duration){
         var time=(audio.currentTime/audio.duration)*100;
@@ -119,6 +129,7 @@ function musicplay(id) {
   leftName.textContent = songs[selectedsong].name;
   play.innerHTML = `<i class="ri-pause-fill"></i>`;
   flag = true;
+  
   audio.play();
 }
 //   ============= playing song function End ↖️ ===========

@@ -12,48 +12,56 @@
 <link rel="icon" href="./images/icon.png">
 </head>
 <body>
-    <div id="player">
+    <section>
+        <div id="player">
         
-        <h3 id="backward">
-            <i class="ri-skip-back-mini-fill"></i>
-        </h3>
-        <h3 id="play"><i class="ri-play-fill"></i></h3>
-        <h3 id="forward"><i class="ri-skip-forward-mini-fill"></i></h3>
-        <div id="users">
-            <i class="ri-user-fill"></i>
-            <ul id="users-show">
-                <li id="p">P</li>
-                <li id="s">S</li>
-            </ul>
+            <h3 id="backward">
+                <i class="ri-skip-back-mini-fill"></i>
+            </h3>
+            <h3 id="play"><i class="ri-play-fill"></i></h3>
+            <h3 id="forward"><i class="ri-skip-forward-mini-fill"></i></h3>
+            <div id="users">
+                <i class="ri-user-fill"></i>
+                <ul id="users-show">
+                    <li id="p">P</li>
+                    <li id="s">S</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div id="main">
-        <div id="left">
-            <div class="img">
-                <img id="left-img" src="images/Bol-Do-Na-Zara.jpg" alt="">
-                <div class="details">
-                    <h2 id="dname"></h2>
-                </div>
-                <div id="progress_div">
-                    <div id="progress">
-                        <div id="circle"></div>
+    </section>
+    <section>
+        <div id="main">
+            <div id="left">
+                <div class="img">
+                    <img id="left-img" src="images/Bol-Do-Na-Zara.jpg" alt="">
+                    <div class="details">
+                        <h2 id="dname"></h2>
+                    </div>
+                    
+                    <div id="progress_div">
+                        <div id="start-time">00:00</div>
+                        <div id="progress">
+                            <div id="circle"></div>
+                        </div>
+                        <div id="end-time">00:00</div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div id="right">
-            <h3>SONGS</h3>
-            <div id="list-top">
-                <div id="title"># title</div>
-                <i class="ri-hourglass-2-fill"></i>
+            
+            <div id="right">
+                <h3>SONGS</h3>
+                <div id="list-top">
+                    <div id="title"># title</div>
+                    <i class="ri-hourglass-2-fill"></i>
+                </div>
+                <ul id="allsongs" >
+                   
+                    
+                </ul>
             </div>
-            <ul id="allsongs" >
-               
-                
-            </ul>
         </div>
-    </div>
+    </section>
+    
     <script src="users/sekhar.js"></script>
     <script src="users/pranjal.js"></script>
     <script src="script.js"></script>

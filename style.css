@@ -26,7 +26,6 @@ body{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     background: rgb(34, 79, 58);
-    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,7 +192,6 @@ body{
     border-radius: 50%;
     cursor: pointer;
     transition: .5s;
-    /* overflow: hidden; */
 }
 #users:hover{
     scale: 1.1;
@@ -207,19 +205,15 @@ body{
     justify-content: center;
     right: -50%;
     list-style: none;
-    gap: 10px;
     transition: .5s;
-    /* transform: translateX(160%); */
     display: none;
     border-radius: 20px;
     border-top-right-radius: 0;
-    overflow: hidden;
     border-bottom-right-radius: 0;
     background:rgba(34, 79, 58, 0.195) ;
     padding: 20px;
 }
 #users ul li{
-    border: 1px solid rgb(34, 79, 58);
     background: rgb(34, 79, 58);
     width: 40px;
     height: 40px;
@@ -229,6 +223,7 @@ body{
     border-radius: 50%;
     cursor: pointer;
     transition: .5s;
+    margin: 5px;
 }
 #users ul li:hover{
     scale: 0.8;
@@ -240,6 +235,9 @@ body{
     background: rgba(255, 255, 255, 0.22);
     position: relative;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 #progress_div:hover{
     cursor: pointer;
@@ -268,6 +266,18 @@ body{
 }
 #progress_div:hover #circle{
     scale: 1.5;
+}
+#start-time{
+    position: relative;
+    left: -12%;
+}
+#end-time{
+    position: relative;
+    right: -12%;
+}
+#start-time,#end-time{
+    font-size: 10px;
+    
 }
 
 /* ====== responsive ========= */
@@ -302,10 +312,19 @@ body{
     #left .img img{
         width: 100px;
     }
+    #dname{
+        font-size: 13px;
+    }
     #left .img{
         border: none;
         flex-direction: column;
         gap: 10px;
+    }
+    #progress_div{
+        width: 200px;
+    }
+    #timings{
+        width: 200px;
     }
     
     
