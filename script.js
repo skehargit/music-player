@@ -5,7 +5,8 @@ var leftImg=document.getElementById("left-img");
 var leftName=document.getElementById("dname");
 var users=document.getElementById('users');
 var startTime=document.getElementById('start-time');
-var endTime=document.getElementById('end-time')
+var endTime=document.getElementById('end-time');
+var repeatbtn=document.getElementById('repeat-btn');
 // ==========Array of objs contain music list=======
 var songs=sekhar;
 document.getElementById('p').addEventListener('click',()=>{
@@ -78,9 +79,19 @@ function mainlistshow() {
 mainlistshow(); //self Invoked
 // ========== to show the list of songs end ↖️ ============
 
+// ==========repeate music=========
+var repeatFlag=false;
+repeatbtn.addEventListener('click',()=>{
+  // alert('clicked')
+  repeatFlag=!repeatFlag; //it is used in progress bar timing 
+  if(repeatFlag)document.getElementById('repeate-text').style.display='block';
+  else document.getElementById('repeate-text').style.display='none';
+});
+
 // ========== progress bar ==========
 var progress=document.getElementById('progress');
 var progress_div=document.getElementById('progress_div');
+
 
 audio.addEventListener('timeupdate',()=>{
 
@@ -98,7 +109,8 @@ audio.addEventListener('timeupdate',()=>{
 
     // === auto play ====
     if(audio.currentTime==audio.duration){
-      if(selectedsong==songs.length-1)selectedsong=0;
+      if(repeatFlag)selectedsong=selectedsong;
+      else if(selectedsong==songs.length-1)selectedsong=0;
       else selectedsong++;
       musicplay(selectedsong);
     }

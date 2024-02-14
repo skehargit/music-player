@@ -228,6 +228,30 @@ body{
 #users ul li:hover{
     scale: 0.8;
 }
+#repeat-btn{
+    position: absolute;
+    left: 20px;
+    border: 1px solid rgb(34, 79, 58);
+    padding: 10px;
+    border-radius: 50%;
+    /* scale: 0.8; */
+}
+#repeat-btn:hover{
+    scale: 0.9;
+}
+#repeate-text{
+    text-transform: capitalize;
+    font-size: 10px;
+    position: absolute;
+    top: -40%;
+    left: -1%;
+    transition: .5s;
+    display: none;
+}
+#repeat-btn:hover #repeate-text{
+    display: block;
+
+}
 /* =========progress bar======= */
 #progress_div{
     width: 300px;
@@ -269,11 +293,11 @@ body{
 }
 #start-time{
     position: relative;
-    left: -12%;
+    left: -13%;
 }
 #end-time{
     position: relative;
-    right: -12%;
+    right: -13%;
 }
 #start-time,#end-time{
     font-size: 10px;
@@ -323,8 +347,11 @@ body{
     #progress_div{
         width: 200px;
     }
-    #timings{
-        width: 200px;
+    #start-time{
+        left: -20%;
+    }
+    #end-time{
+        right: -20%;
     }
     
     
