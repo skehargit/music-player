@@ -8,7 +8,7 @@ var startTime=document.getElementById('start-time');
 var endTime=document.getElementById('end-time');
 var repeatbtn=document.getElementById('repeat-btn');
 // ==========Array of objs contain music list=======
-var songs=sekhar;
+var songs=pranjal;
 document.getElementById('p').addEventListener('click',()=>{
   songs=pranjal;
   mainlistshow();

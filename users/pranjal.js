@@ -1,4 +1,34 @@
 var pranjal=[
+  {
+    name: "FRI(END)S",
+    url: "./songs/friends.mp3",
+    img: "./images/friendsV.jpeg",
+    duration: "2.46",
+  },
+  {
+    name: "seven",
+    url: "./songs/seven.mp3",
+    img: "./images/seven.jpeg",
+    duration: "3.07",
+  },
+  {
+    name: "One of the girls",
+    url: "./songs/oneofthegirls.mp3",
+    img: "./images/oneOfTheGirls.jpeg",
+    duration: "4.18",
+  },
+  {
+    name: "3D",
+    url: "./songs/3D.mp3",
+    img: "./images/3D.png",
+    duration: "3.21",
+  },
+  {
+    name: "Bloodline",
+    url: "./songs/bloodline.mp3",
+    img: "./images/bloodline.jpeg",
+    duration: "3.36",
+  },
     {
         name: "Chili",
         url: "./songs/chili.mp3",
