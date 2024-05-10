@@ -2,11 +2,14 @@ var play = document.querySelector("#play");
 var backward = document.querySelector("#backward");
 var forward = document.querySelector("#forward");
 var leftImg=document.getElementById("left-img");
-var leftName=document.getElementById("dname");
 var users=document.getElementById('users');
 var startTime=document.getElementById('start-time');
 var endTime=document.getElementById('end-time');
 var repeatbtn=document.getElementById('repeat-btn');
+var currSongImg=document.querySelector('.currSongImg');
+var currSongName=document.querySelector('.currSongName');
+
+var rotatation=360;// for gsap rotate animation
 // ==========Array of objs contain music list=======
 var songs=pranjal;
 document.getElementById('p').addEventListener('click',()=>{
@@ -48,12 +51,28 @@ forward.addEventListener("click", () => {
   if (selectedsong >= songs.length) {
     selectedsong = 0;
   }
+  // rotateAnimation
+  if(rotatation==0){
+    rotatation=360;
+    rotateAnimation(0)
+  }else{
+    rotatation=0;
+    rotateAnimation(360)
+  }
   musicplay(selectedsong);
 });
 backward.addEventListener("click", () => {
   selectedsong--;
   if (selectedsong < 0) {
     selectedsong = songs.length - 1;
+  }
+  // rotateAnimation
+  if(rotatation==0){
+    rotatation=360;
+    rotateAnimation(0)
+  }else{
+    rotatation=0;
+    rotateAnimation(360)
   }
   musicplay(selectedsong);
 });
@@ -66,14 +85,15 @@ function mainlistshow() {
     output += `<li class="song-card" id=${idx}>
         <div class="part1">
             <img src="${el.img}" name='${idx}' alt="">
-            <h2  name='${idx}' >${el.name}</h2>
+            <h2 name='${idx}' class='flex relative overflow-hidden' ><span class='songCardName1'>${el.name}</span></h2>
         </div>
         <h3>${el.duration}</h3>
     </li>`;
   });
   document.getElementById("allsongs").innerHTML = output;
   leftImg.src = songs[selectedsong].img;
-  leftName.textContent = songs[selectedsong].name;
+  currSongImg.src=songs[selectedsong].img;
+ currSongName.textContent=songs[selectedsong].name;
   audio.src = songs[selectedsong].url;
 }
 mainlistshow(); //self Invoked
@@ -84,8 +104,8 @@ var repeatFlag=false;
 repeatbtn.addEventListener('click',()=>{
   // alert('clicked')
   repeatFlag=!repeatFlag; //it is used in progress bar timing 
-  if(repeatFlag)document.getElementById('repeate-text').style.display='block';
-  else document.getElementById('repeate-text').style.display='none';
+  if(repeatFlag)document.getElementById('no-repeat').style.display='block';
+  else document.getElementById('no-repeat').style.display='none';
 });
 
 // ========== progress bar ==========
@@ -98,6 +118,7 @@ audio.addEventListener('timeupdate',()=>{
   // ========timing=====
   var str=('0'+(audio.duration/60+'').substring(0,4));
   if(str!='0NaN')endTime.innerHTML=str;
+  if(str!='0NaN')document.querySelector('.length').textContent=str;
   var str2=('0'+(audio.currentTime/60+'').substring(0,4));
   if(str2!='00')startTime.innerHTML=str2;
   
@@ -129,6 +150,16 @@ document.getElementById("allsongs").addEventListener("click", (el) => {
   var num=el.target.id;
   if(!num)num=Number(el.target.attributes.name.value);
   selectedsong=num;
+
+  /// roation animation using gsap
+  if(rotatation==0){
+    rotatation=360;
+    rotateAnimation(0)
+  }else{
+    rotatation=0;
+    rotateAnimation(360)
+  }
+
   musicplay(selectedsong);
 });
 // =========== song select End ↖️ =======
@@ -136,9 +167,11 @@ document.getElementById("allsongs").addEventListener("click", (el) => {
 // ============= playing song function ↙️ ===========
 function musicplay(id) {
   // if(!Number(id))console.log(id)
+  // rotateAnimation();
   audio.src = songs[id].url;
   leftImg.src = songs[id].img;
-  leftName.textContent = songs[selectedsong].name;
+  currSongImg.src=songs[id].img;
+  currSongName.textContent=songs[selectedsong].name;
   play.innerHTML = `<i class="ri-pause-fill"></i>`;
   flag = true;
   
